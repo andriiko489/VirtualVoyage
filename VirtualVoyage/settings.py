@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'panorama.apps.PanoramaConfig',
+    'users.apps.UserConfig',
+    'social_django',
 ]
 
 MIDDLEWARE = [
