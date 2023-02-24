@@ -2,6 +2,7 @@ from django.db import models
 class Excursion(models.Model):
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
+    is_private = models.BooleanField(default=0)
 
 class Panorama(models.Model):
     description = models.CharField(max_length=200)
