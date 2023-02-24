@@ -1,18 +1,71 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <title>360&deg; Image</title>
     <meta name="description" content="360&deg; Image - A-Frame">
     <script src="https://aframe.io/aframe/dist/aframe-master.js"></script>
-  </head>
-  <body>
-    <a-scene>
-      <a-sky src="{{ panorama.image.url }}" rotation="0 -130 0"></a-sky>
+</head>
+<body>
 
-      <a-text font="kelsonsans" value="{{ panorama.description }}" width="6" position="-2.5 0.25 -1.5"
-              rotation="0 15 0"></a-text>
-    </a-scene>
-  </body>
+<a-scene cursor="rayOrigin: mouse">
+    <a-camera look-controls wasd-controls-enabled="false">
+        <a-plane id="buttonLeft" color="white" onclick="previous()" position="-1.4 0 -1" height="0.15" width="0.3"
+                 material="transparent: true; opacity: 0.1"></a-plane>
+        <a-plane id="buttonRight" color="white" onclick="next()" position="1.4 0 -1" height="0.15" width="0.3"
+                 material="transparent: true; opacity: 0.1"></a-plane>
+    </a-camera>
+
+    <a-entity camera look-controls enabled="false"></a-entity>
+    <a-sky src="{{ panorama.image.url }}" rotation="0 -130 0"></a-sky>
+    <a-plane id="buttonHold" position="0 0.5 -3" material="transparent: true; opacity: 0.1"></a-plane>
+
+
+    <script>
+        var capacity = {{ num }};
+        var idPanorama = {{panorama_id}};
+        var idExcursion = {{excursion_id}};
+        var str;
+
+        function previous() {
+            if (idPanorama > 0) {
+                idPanorama--;
+                str = "http://127.0.0.1:8000/panorama/" + idExcursion +"/"+ idPanorama;
+                window.location.href = str;
+            }
+        };
+
+        function next() {
+            if (idPanorama+1 < capacity) {
+                idPanorama++;
+                str = "http://127.0.0.1:8000/panorama/" + idExcursion + "/" + idPanorama;
+                window.location.href = str;
+            }
+        };
+    </script>
+
+    <script>
+        var buttonHold = document.querySelector('#buttonHold');
+        var hoverTimer = null;
+
+        buttonHold.addEventListener('mouseenter', function () {
+            hoverTimer = setTimeout(function () {
+                    buttonHold.setAttribute('opacity', '1');
+                }
+                , 1000);
+        });
+
+        buttonHold.addEventListener('mouseleave', function () {
+            buttonHold.setAttribute('opacity', '0');
+            clearTimeout(hoverTimer);
+        });
+    </script>
+
+    <a-entity id="box" cursor-listener geometry="primitive: box"
+              material="color: blue"></a-entity>
+    <a-text font="kelsonsans" value="{{ panorama.description }}" width="6" position="-2.5 0.25 -1.5"
+            rotation="0 15 0"></a-text>
+</a-scene>
+</body>
 </html>
