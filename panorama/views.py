@@ -3,7 +3,8 @@ from django.shortcuts import render
 
 from .models import Panorama, Excursion
 def panorama(request, excursion_id=0, panorama_id=0):
-    #excursion_id = 1
+    excursion_id += 1
+    print(excursion_id)
     panorams = Panorama.objects.filter(excursion=excursion_id)
     num = len(panorams)
     panorama = panorams[panorama_id]
