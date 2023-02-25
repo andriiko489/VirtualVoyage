@@ -32,6 +32,7 @@
         </nav>
 <a-scene cursor="rayOrigin: mouse">
    <a-camera look-controls wasd-controls-enabled="false">
+
        <a-plane id="buttonLeft" material="src: ../../../media/leftarrow.png ; transparent: true; opacity: 0.3" onclick="previous()"
                 position="-1.4 0 -1" height="0.3" width="0.3"></a-plane>
        <a-plane id="buttonRight" material="src: ../../../media/rightarrow.png ; transparent: true; opacity: 0.3" onclick="next()"
@@ -80,8 +81,8 @@
             clearTimeout(hoverTimer);
         });
     </script>
-    <a-text font="kelsonsans" value="{{ panorama.description }}" width="6" position="-2.5 0.25 -1.5"
-            rotation="0 15 0"></a-text>
+{#    <a-text font="kelsonsans" value="{{ panorama.description }}" width="6" position="-2.5 0.25 -1.5"#}
+{#            rotation="0 15 0"></a-text>#}
 </a-scene>
 </body>
 </html>
