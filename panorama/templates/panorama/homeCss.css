@@ -45,41 +45,12 @@ header nav ul li a {
     text-align: center;
 }
 
-.features img {
-    min-width: 300px;
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    margin-bottom: 10px;
-}
-.allFeature{
-     justify-content: center;
-    margin: 50px ;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #f7f7f7;
-    padding: 50px;
-    text-align: center;
-}
 .features {
-     flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto;
     background-color: #f7f7f7;
     padding: 50px;
     text-align: center;
 }
-.feature {
-    display: inline-block;
-    min-width: 300px;
-    margin: 20px;
-    max-width: 500px;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
-.feature img{
-}
+
 .features h2 {
     margin-top: 0;
 }
@@ -229,7 +200,6 @@ header nav ul li a {
 }
 
 .sticky {
-    height: 3rem;
     position: fixed;
     top: 0;
     width: 100%;
@@ -249,8 +219,7 @@ footer p {
 
 #home {
     background: #333;
-    padding-top: 100px !important;
-    font-size: 0.8rem !important;
+    padding-top: 10px;
 }
 
 #navbar {
@@ -292,56 +261,9 @@ p {
     font-size: 0.75rem !important;
 
 }
-@media (max-width: 1200px) {
-    h1 {
 
-    font-size: 54px !important;
-}
-
-h2 {
-    font-size: 44px !important;
-}
-
-h3 {
-    font-size: 34px !important;
-}
-
-h4 {
-    font-size: 24px !important;
-
-}
-
-p {
-    font-size: 14px !important;
-
-}
-}
-@media (max-width: 800px) {
-    h1 {
-
-    font-size: 50px !important;
-}
-
-h2 {
-    font-size: 40px !important;
-}
-
-h3 {
-    font-size: 30px !important;
-}
-
-h4 {
-    font-size: 20px !important;
-
-}
-
-p {
-    font-size: 10px !important;
-
-}
-}
 /* Медіа-запити */
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     header nav ul li {
         display: block;
         margin-bottom: 10px;
@@ -369,24 +291,6 @@ p {
         justify-content: center;
         flex-wrap: wrap;
         font-size: 4rem !important;
-    }
-
-    h2 {
-        font-size: 3rem !important;
-    }
-
-    h3 {
-        font-size: 2rem !important;
-    }
-
-    h4 {
-        font-size: 1.5rem !important;
-
-    }
-
-    p {
-        font-size: 1rem !important;
-
     }
 
 }
