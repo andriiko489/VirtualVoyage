@@ -1,38 +1,87 @@
-* {
-  padding: 0;
-  margin: 0;
-  font-family: Arial;
-  box-sizing: border-box;
+html {
+    padding: 0;
+    margin: 0;
+    font-family: Arial;
+    box-sizing: border-box;
+    height: 100%;
 }
 
-.blocks{
-  max-width: 1224px;
-  width: 92%;
-  margin: 20px auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+body {
+   min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.blocks {
+    max-width: 1600px;
+    height: 100%;
+    width: 92%;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
 
 }
-.tour-pan{
-  width: 400px;
-  height: 230px;
-}
-.tour-pan img{
-  width: 300px;
-  height: 200px;
-}
+
 .tour-pan {
-  text-align: center;
+    border-radius: 25px;
+    min-width: 300px;
+    height: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    margin: 0;
+    display: inline-block;
+
 }
-form div{
+
+.tour-pan img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.tour-pan {
+    text-align: center;
+}
+.btn {
+    align: center;
+    justify-content: center;
+    min-width: 200px;
+    display: flex;
+    padding: 10px 20px;
+    background-color: #f6f6f6;
+    width: 95%;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 40px;
+    transition: background-color 0.3s ease;
+}
+
+footer {
+     margin-top: auto;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+.button {
+
+    display: flex;
+    justify-content: center;
+}
+form div {
     margin-left: 30px;
     margin-top: 30px;
     display: flex;
     width: 300px;
     flex-direction: column;
 }
-.name{
+
+.name {
     height: 30px;
     font-size: large;
 }
