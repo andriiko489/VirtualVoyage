@@ -46,8 +46,8 @@
     const name_of_tour = "d";
     {% for panorama in panorams %}
       div.insertAdjacentHTML("beforeend", `<div class="tour-pan">
-        <a href="{{ panorama.excursion_id }}" style=" text-decoration: none"> <img src="{{ panorama.image.url }}">
-          <div> <p>{{ panorama.description }}</p></div>
+        <a href="{{ forloop.counter }}" style=" text-decoration: none"> <img src="{{ panorama.image.url }}">
+          <div> <p>{{  panorama.description }}</p></div>
         </a>
       </div>`)
     {% endfor %}
