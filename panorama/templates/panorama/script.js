@@ -5,3 +5,4 @@ window.addEventListener('resize', function() {
     causeRepaintsOn.css("z-index", 1);
   });
 });
+
