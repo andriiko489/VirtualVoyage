@@ -6,7 +6,7 @@ from panorama.views import panorama
 
 
 urlpatterns = [
-    path('panorama/<int:excursion_id>/<int:panorama_id>/', panorama),
+    path('panorama/', include('panorama.urls')),
     path('admin/', admin.site.urls),
     path('', include('users.urls')),
     path('accounts/', include('users.urls')),
