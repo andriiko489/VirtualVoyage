@@ -31,16 +31,15 @@
             </div>
         </nav>
 <a-scene cursor="rayOrigin: mouse">
-    <a-camera look-controls wasd-controls-enabled="false">
-        <a-plane id="buttonLeft" color="white" onclick="previous()" position="-1.4 0 -1" height="4.15" width="0.3"
-                 material="transparent: true; opacity: 0.1"></a-plane>
-        <a-plane id="buttonRight" color="white" onclick="next()" position="1.4 0 -1" height="4.15" width="0.3"
-                 material="transparent: true; opacity: 0.1"></a-plane>
-    </a-camera>
+   <a-camera look-controls wasd-controls-enabled="false">
+       <a-plane id="buttonLeft" material="src: ../../../media/leftarrow.png ; transparent: true; opacity: 0.3" onclick="previous()"
+                position="-1.4 0 -1" height="0.3" width="0.3"></a-plane>
+       <a-plane id="buttonRight" material="src: ../../../media/rightarrow.png ; transparent: true; opacity: 0.3" onclick="next()"
+                position="1.4 0 -1" height="0.3" width="0.3"></a-plane>
+   </a-camera>
 
     <a-entity camera look-controls enabled="false"></a-entity>
     <a-sky src="{{ panorama.image.url }}" rotation="0 -130 0"></a-sky>
-
 
     <script>
         var capacity = {{ num }};
