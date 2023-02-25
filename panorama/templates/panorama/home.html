@@ -3,38 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Віртуальні екскурсії</title>
+    <title>Virtual Voyage</title>
     <link rel="stylesheet" href="homeCss.css">
     <script src="script.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!--Font awesome icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
 </head>
 <body>
 <div>
     <header id="home">
-        <div id="navbar">
-            <a href="#home">Головна</a>
-            <a href="">Про нас</a>
-            <a href="#excursion">Екскурсії</a>
-            <a href="#contacts">Контакти</a>
+        <div id="navbar" class="sticky">
+            <nav class="navbar navbar-expand-md navbar-light " style="background-color: #333;">
+                <a style="color: rgba(255,255,255,1);" href="/" class="navbar-brand">Home</a>
+                <button  type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse"  >
+                    <div class="navbar-nav ml-auto" >
+                        {% if user.is_authenticated %}
+                            <a style="color: rgba(255,255,255,.7);" href="{% url 'users-profile' %}" class="nav-item nav-link">Profile</a>
+                            <a style="color: rgba(255,255,255,.7);" href="{% url 'logout' %}" class="nav-item nav-link">Logout</a>
+                        {% else %}
+                            <a style="color: rgba(255,255,255,.7);" href="{% url 'login' %}" class="nav-item nav-link">Sign in</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </nav>
         </div>
-        <script>
-            window.onscroll = function () {
-                myFunction()
-            };
-            var navbar = document.getElementById("navbar");
-            var sticky = navbar.offsetTop;
 
-            function myFunction() {
-                if (window.pageYOffset >= sticky) {
-                    navbar.classList.add("sticky")
-                } else {
-                    navbar.classList.remove("sticky");
-                }
-            }
-        </script>
         <div class="header-content">
-            <h1>Віртуальні екскурсії</h1>
+            <h1>Virtual</h1>
+            <h1></h1>
+            <h1>Voyage</h1>
             <p>Досліджуй світ зручно та безпечно</p>
-            <a href="#" class="btn">Дізнатися більше</a>
+        </div>
+        <div>
         </div>
     </header>
 </div>
