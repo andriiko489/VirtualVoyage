@@ -1,13 +1,20 @@
+html {
+    font-size: 1.6vw !important;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: Tahoma, sans-serif;
     margin: 0;
     padding: 0;
+
 }
 
 header {
     background-color: #333;
     color: #fff;
-    padding: 20px;
+    padding-top: 70px !important;
+    padding-bottom: 30px;
+
 }
 
 header nav ul {
@@ -31,7 +38,9 @@ header nav ul li a {
 }
 
 .header-content {
-    padding-top: 50px;
+    background: url("../../../media/h3.jpg") no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin-top: 10px;
     text-align: center;
 }
@@ -46,9 +55,10 @@ header nav ul li a {
     margin-top: 0;
 }
 
-.popularTours{
+.popularTours {
 }
-.button{
+
+.button {
 
     display: flex;
     justify-content: center;
@@ -62,14 +72,17 @@ header nav ul li a {
     flex-direction: row;
     padding: 20px;
 }
-.info{
+
+.info {
     margin: 0 auto;
 
 }
+
 .tour {
+    border-radius: 25px;
     display: inline-block;
     min-width: 300px;
-    margin: 25px ;
+    margin: 25px;
     max-width: 500px;
     padding: 30px;
     background-color: #fff;
@@ -92,13 +105,15 @@ header nav ul li a {
 }
 
 .btn {
-
-    display: inline-block;
+    align: center;
+    justify-content: center;
+    min-width: 200px;
+    display: flex;
     padding: 10px 20px;
     background-color: #333;
     color: #fff;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 25px;
     transition: background-color 0.3s ease;
 }
 
@@ -160,12 +175,14 @@ header nav ul li a {
 .contact form button:hover {
     background-color: #666;
 }
-.contactText{
+
+.contactText {
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
 
 }
+
 .contact-info {
     padding: 20px;
     display: inline-block;
@@ -181,10 +198,12 @@ header nav ul li a {
 .contact-info p {
     margin: 5px;
 }
+
 .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 footer {
@@ -197,28 +216,54 @@ footer {
 footer p {
     margin: 0;
 }
-#home{
-    padding: 0;
+
+#home {
+    background: #333;
+    padding-top: 10px;
 }
+
 #navbar {
-    padding: 10px;
-  overflow: hidden;
-  background-color: #333;
+    overflow: hidden;
+    background-color: #333;
 }
 
 /* Navbar links */
 #navbar a {
-    margin: 0;
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px;
-  text-decoration: none;
+    border: #666;
+    /*  margin: 0;*/
+    /*float: left;*/
+    /*display: block;*/
+    /*color: #f2f2f2;*/
+    /*text-align: center;*/
+    /*padding: 14px;*/
+    /*text-decoration: none;*/
+}
+
+h1 {
+
+    font-size: 4rem !important;
+}
+
+h2 {
+    font-size: 3rem !important;
+}
+
+h3 {
+    font-size: 2.25rem !important;
+}
+
+h4 {
+    font-size: 1.15rem !important;
+
+}
+
+p {
+    font-size: 0.9rem !important;
+
 }
 
 /* Медіа-запити */
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     header nav ul li {
         display: block;
         margin-bottom: 10px;
@@ -226,7 +271,6 @@ footer p {
 
     .header-content {
         margin: 0 auto;
-
     }
 
     .features {
@@ -242,14 +286,11 @@ footer p {
     }
 
     h1 {
-        font-size: 5.9vw;
+        margin: 0 auto;
+        display: inline-block;
+        justify-content: center;
+        flex-wrap: wrap;
+        font-size: 4rem !important;
     }
 
-    h2 {
-        font-size: 3.9vh;
-    }
-
-    p {
-        font-size: 3vmin;
-    }
 }
