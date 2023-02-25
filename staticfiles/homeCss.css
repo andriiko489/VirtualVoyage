@@ -1,12 +1,13 @@
 html {
-    font-size: 1.6vw !important;
+    font-size: 1vw !important;
 }
 
 body {
     font-family: Tahoma, sans-serif;
     margin: 0;
     padding: 0;
-
+    background: rgb(252,201,255);
+    background: linear-gradient(180deg, rgba(252,201,255,1) 0%, rgba(228,228,228,1) 50%, rgba(255,255,255,0.4318102240896359) 100%);
 }
 
 header {
@@ -45,10 +46,45 @@ header nav ul li a {
     text-align: center;
 }
 
-.features {
-    background-color: #f7f7f7;
+.features img {
+    min-width: 300px;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.allFeature {
+    justify-content: center;
+    margin: 50px;
+    display: flex;
+    flex-wrap: wrap;
     padding: 50px;
     text-align: center;
+}
+
+.features {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    display: flex;
+    min-width: 300px;
+    padding: 50px;
+    text-align: center;
+}
+
+.feature {
+    display: inline-block;
+
+    min-width: 300px;
+    margin: 15px;
+    max-width: 500px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.feature img {
 }
 
 .features h2 {
@@ -84,8 +120,10 @@ header nav ul li a {
     min-width: 300px;
     margin: 25px;
     max-width: 500px;
-    padding: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     background-color: #fff;
+    text-align: center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -200,6 +238,7 @@ header nav ul li a {
 }
 
 .sticky {
+    height: 4rem;
     position: fixed;
     top: 0;
     width: 100%;
@@ -219,7 +258,8 @@ footer p {
 
 #home {
     background: #333;
-    padding-top: 10px;
+    padding-top: 100px !important;
+    font-size: 0.8rem !important;
 }
 
 #navbar {
@@ -241,29 +281,79 @@ footer p {
 
 h1 {
 
-    font-size: 4rem !important;
+    font-size: 94px !important;
 }
 
 h2 {
-    font-size: 2rem !important;
+    font-size: 32px !important;
 }
 
 h3 {
-    font-size: 1.5rem !important;
+    font-size: 24px !important;
 }
 
 h4 {
-    font-size: 1rem !important;
+    font-size: 20px !important;
 
 }
 
 p {
-    font-size: 0.75rem !important;
+    font-size: 18px !important;
 
 }
 
+@media (max-width: 1200px) {
+    h1 {
+
+        font-size: 90px !important;
+    }
+
+    h2 {
+        font-size: 30px !important;
+    }
+
+    h3 {
+        font-size: 22px !important;
+    }
+
+    h4 {
+        font-size: 19px !important;
+
+    }
+
+    p {
+        font-size: 17px !important;
+
+    }
+}
+
+@media (max-width: 800px) {
+    h1 {
+
+        font-size: 87px !important;
+    }
+
+    h2 {
+        font-size: 28px !important;
+    }
+
+    h3 {
+        font-size: 20px !important;
+    }
+
+    h4 {
+        font-size: 17px !important;
+
+    }
+
+    p {
+        font-size: 15px !important;
+
+    }
+}
+
 /* Медіа-запити */
-@media (max-width: 700px) {
+@media (max-width: 600px) {
     header nav ul li {
         display: block;
         margin-bottom: 10px;
@@ -290,7 +380,24 @@ p {
         display: inline-block;
         justify-content: center;
         flex-wrap: wrap;
-        font-size: 4rem !important;
+        font-size: 5rem !important;
+    }
+
+    h2 {
+        font-size: 3rem !important;
+    }
+
+    h3 {
+        font-size: 2rem !important;
+    }
+
+    h4 {
+        font-size: 1.6rem !important;
+
+    }
+
+    p {
+        font-size: 1.5rem !important;
     }
 
 }

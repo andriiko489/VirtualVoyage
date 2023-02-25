@@ -48,7 +48,7 @@
         var str;
 
         function previous() {
-            if (idPanorama > 0) {
+            if (idPanorama > 1) {
                 idPanorama--;
                 str = "http://127.0.0.1:8000/panorama/" + idExcursion +"/"+ idPanorama;
                 window.location.href = str;
@@ -56,7 +56,7 @@
         };
 
         function next() {
-            if (idPanorama+1 < capacity) {
+            if (idPanorama < capacity) {
                 idPanorama++;
                 str = "http://127.0.0.1:8000/panorama/" + idExcursion + "/" + idPanorama;
                 window.location.href = str;

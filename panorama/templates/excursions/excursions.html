@@ -46,7 +46,7 @@
     const name_of_tour = "d";
     {% for excursion in excursions %}
       div.insertAdjacentHTML("beforeend", `<div class="tour-pan">
-        <a href="{{ excursion }}" style=" text-decoration: none"> <img src="{{ excursion.image.url }}">
+        <a href="{{ excursion.id }}" style=" text-decoration: none"> <img src="{{ excursion.image.url }}">
           <div> <p>{{ excursion.title }}</p></div>
         </a>
       </div>`)

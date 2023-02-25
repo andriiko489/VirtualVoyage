@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-
+from django.views.generic.edit import CreateView
 from .models import Panorama, Excursion
 def panorama(request, excursion_id=1, panorama_id=1):
     print(excursion_id)
@@ -20,3 +20,10 @@ def excursion(request, excursion_id):
 def home(request):
     context = {}
     return render(request, 'home/home.html', context)
+
+class ExcursionCreateView(CreateView):
+    model = Excursion
+    fields = ['title','description','image','is_private','users']
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('excursions')
