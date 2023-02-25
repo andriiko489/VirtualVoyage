@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual Voyage</title>
     <link rel="stylesheet" href="homeCss.css">
-    <script src="../panorama/script.js"></script>
+    <script src="script.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -20,18 +20,16 @@
         <div id="navbar" class="sticky">
             <nav class="navbar navbar-expand-md navbar-light " style="background-color: #333;">
                 <a style="color: rgba(255,255,255,1);" href="/" class="navbar-brand">Home</a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <button  type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ml-auto">
+                <div class="collapse navbar-collapse" id="navbarCollapse"  >
+                    <div class="navbar-nav ml-auto" >
                         {% if user.is_authenticated %}
-                            <a style="color: rgba(255,255,255,.7);" href="{% url 'users-profile' %}"
-                               class="nav-item nav-link">Profile</a>
+                            <a style="color: rgba(255,255,255,.7);" href="{% url 'users-profile' %}" class="nav-item nav-link">Profile</a>
                             <a style="color: rgba(255,255,255,.7);" href="{% url 'logout' %}" class="nav-item nav-link">Logout</a>
                         {% else %}
-                            <a style="color: rgba(255,255,255,.7);" href="{% url 'login' %}" class="nav-item nav-link">Sign
-                                in</a>
+                            <a style="color: rgba(255,255,255,.7);" href="{% url 'login' %}" class="nav-item nav-link">Sign in</a>
                         {% endif %}
                     </div>
                 </div>
@@ -48,29 +46,23 @@
         </div>
     </header>
 </div>
-
 <section class="features">
     <h2>Наші особливості</h2>
-    <div class="allFeature">
-        <div class="feature">
-            <h3>Безпечність</h3>
-            <img src="../../../media/lock.jpg" alt="Особливість 1">
-            <p>Віртуальні екскурсії дозволяють досліджувати світ, не виходячи з дому.</p>
-
-        </div>
-
-        <div class="feature">
-            <h3>Доступність</h3>
-            <img src="../../../media/inet.jpg" alt="Особливість 2">
-            <p>Віртуальні екскурсії доступні для кожного користувача без обмежень.</p>
-        </div>
-        <div class="feature">
-            <h3>Творчість</h3>
-            <img src="../../../media/mona.jpg" alt="Особливість 2">
-            <p>Ми надаємо простий та зрозумілий інструментарій для створення цікавих екскурсій</p>
-        </div>
+    <div class="feature">
+        <img src="..//media/luvr.jpg" alt="Особливість 1">
+        <h3>Безпечність</h3>
+        <p>Віртуальні екскурсії дозволяють досліджувати світ, не виходячи з дому.</p>
     </div>
-
+    <div class="feature">
+        <img src="images/feature-2.jpg" alt="Особливість 2">
+        <h3>Доступність</h3>
+        <p>Віртуальні екскурсії доступні для кожного користувача без обмежень.</p>
+    </div>
+    <div class="feature">
+        <img src="images/feature-3.jpg" alt="Особливість 3">
+        <h3>Реалістичність</h3>
+        <p>Віртуальні екскурсії відтворюють реальність і дозволяють досліджувати її на відстані.</p>
+    </div>
 </section>
 
 <section class="popularTours" id="excursion">
@@ -79,7 +71,7 @@
     <div class="tours">
         <div class="tour">
             <h3>Музей Лувр, Париж</h3>
-            <img src="../../../media/luvr.jpg" alt="Екскурсія 1">
+            <img src="../../../media/luvr.jpg" align="center" alt="Екскурсія 1">
             <div class="info">
                 <p>Дізнайтеся про кращі твори світової культури, перебуваючи на відстані.</p>
                 <div class="button">
