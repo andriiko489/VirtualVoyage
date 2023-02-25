@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!--Font awesome icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+          integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="styleExcursion.css">
+
+</head>
+<body>
+<div class="nav-pan">
+    <nav class="navbar navbar-expand-md navbar-light " style="background-color: #f0f5f5">
+        <a href="/" class="navbar-brand">Home</a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ml-auto" id="navbar-nav-ml-auto">
+                <a href="./upload_page.html" class="nav-item nav-link">Upload</a>
+
+                {% if user.is_authenticated %}
+                    <a href="{% url 'users-profile' %}" class="nav-item nav-link">Profile</a>
+                    <a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="nav-item nav-link">Sign in</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</div>
+
+<main class="app">
+    <div class="header">
+        <h2>Tour Name</h2>
+        <div class="server-message"></div>
+    </div>
+
+    <div>
+        <input type="text" class="tour-name" placeholder="Name">
+    </div>
+
+    <div class="header">
+        <h2>Upload Images</h2>
+        <div class="server-message"></div>
+    </div>
+
+    <div class="input-div">
+        <p>Drag and drop images here or <span class="browse">Browse</span></p>
+        <input type="file" class="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg">
+    </div>
+
+    <form id="saved-form">
+        <div class="header">
+            <h3>Saved In Server</h3>
+            <button type="submit">Delete</button>
+        </div>
+        <div class="saved-div"></div>
+    </form>
+
+    <form id="queued-form">
+        <div class="header">
+            <h3>Queued In Frontend</h3>
+            <button type="submit">Upload</button>
+        </div>
+        <div class="queued-div"></div>
+    </form>
+</main>
+
+<script>
+    let queuedImagesArray = [],
+        savedForm = document.querySelector("#saved-form"),
+        queuedForm = document.querySelector("#queued-form"),
+        savedDiv = document.querySelector('.saved-div'),
+        queuedDiv = document.querySelector('.queued-div'),
+        inputDiv = document.querySelector('.input-div'),
+        input = document.querySelector('.input-div input'),
+        serverMessage = document.querySelector('.server-message'),
+        //savedImages = JSON.parse('<%-JSON.stringify(images)%>'),
+        deleteImages = [];
+
+    input.addEventListener("change", () => {
+        const files = input.files;
+        for (let i = 0; i < files.length; i++) {
+            queuedImagesArray.push(files[i])
+        }
+        queuedForm.reset();
+        displayQueuedImages()
+    })
+
+    inputDiv.addEventListener("drop", (e) => {
+        e.preventDefault()
+        const files = e.dataTransfer.files
+        for (let i = 0; i < files.length; i++) {
+            if (!files[i].type.match("image")) continue;
+            if (queuedImagesArray.every(image => image.name !== files[i].name))
+                queuedImagesArray.push(files[i])
+        }
+        displayQueuedImages()
+    })
+
+    function displayQueuedImages() {
+        let images = "";
+        queuedImagesArray.forEach((image, index) => {
+            images += `<div class="image">
+                <img src="${URL.createObjectURL(image)}" alt="image">
+                <span onclick="deleteQueuedImage(${index})">&times;</span>
+              </div>`;
+        })
+        queuedDiv.innerHTML = images;
+    }
+
+    function deleteQueuedImage(index) {
+        queuedImagesArray.splice(index, 1);
+        displayQueuedImages();
+    }
+
+    queuedForm.addEventListener("submit", (e) => {
+        e.preventDefault()
+        sendQueuedImagesToServer()
+    });
+
+    function sendQueuedImagesToServer() {
+        const formData = new FormData(queuedForm);
+
+        queuedImagesArray.forEach((image, index) => {
+            formData.append(file[${index}], image)
+        })
+
+        fetch("upload", {
+            method: "POST",
+            body: formData
+        })
+
+            .then(response => {
+
+                if (response.status !== 200) throw Error(response.statusText)
+                location.reload()
+            })
+
+            .catch(error => {
+                serverMessage.innerHTML = error
+                serverMessage.style.cssText = "background-color: #f8d7da; color:#b71c1c"
+            });
+    }
+</script>
+</body>
+</html>

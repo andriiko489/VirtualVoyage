@@ -2,13 +2,13 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-from panorama.views import panorama
+from panorama.views import panorama, home
 
 
 urlpatterns = [
     path('panorama/', include('panorama.urls')),
     path('admin/', admin.site.urls),
-    path('', include('users.urls')),
+    path('', home, name='home'),
     path('accounts/', include('users.urls')),
 ]
 if settings.DEBUG:
