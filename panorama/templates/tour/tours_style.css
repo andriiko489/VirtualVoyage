@@ -1,0 +1,38 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Arial;
+  box-sizing: border-box;
+}
+
+.blocks{
+  max-width: 1224px;
+  width: 92%;
+  margin: 20px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+}
+.tour-pan{
+  width: 400px;
+  height: 230px;
+}
+.tour-pan img{
+  width: 300px;
+  height: 200px;
+}
+.tour-pan {
+  text-align: center;
+}
+form div{
+    margin-left: 30px;
+    margin-top: 30px;
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+}
+.name{
+    height: 30px;
+    font-size: large;
+}
