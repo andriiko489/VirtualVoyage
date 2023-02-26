@@ -52,9 +52,10 @@
   <p>
     <div class="select-container">
         <label class="title" for="id_users">Users:</label>
-        <select name="users" id="id_users">
-            <option value="4">admin</option>
-            <option value="5">andriiko489</option>
+        <select name="users" id="id_users" multiple size="{{ len }}" height="{{ height }}px">
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endfor %}
         </select>
     </div>
   </p>
