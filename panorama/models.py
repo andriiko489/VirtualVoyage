@@ -14,7 +14,7 @@ class Excursion(models.Model):
 
 class Panorama(models.Model):
     description = models.CharField(max_length=200)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField()
     excursion = models.ForeignKey(Excursion, on_delete=models.CASCADE, blank=True)
     def __str__(self):
         return self.description
