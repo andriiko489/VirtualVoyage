@@ -1,0 +1,118 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  nav{
+    border-bottom: solid;
+    
+  }
+body {
+    font-family: 'Jost', sans-serif;
+    background-color: whitesmoke;
+  }
+.wrapper{
+    max-width: 1224px;
+    width: 92%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.title{
+    font-size: 30px;
+    margin: 0;
+}
+.tour-name{
+  width: 300px;
+  height: 50px;
+  font-size: 26px;
+  padding: 10px;
+}
+.description-value{
+    width: 300px;
+    height: 50px;
+    font-size: 26px;
+    padding: 10px;
+  }
+  .input-div {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 2px dotted black;
+    background-color: white;
+    position: relative;
+  }
+  .file {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .checkbox-container label{
+    cursor: pointer;
+    display: flex;
+  }
+
+  .checkbox-container{
+    cursor: pointer;
+    display: flex;
+    align-items:center;
+    
+  } 
+  .checkbox-container input[type='checkbox']{
+  appearance: none;
+  -webkit-appearance: none !important;
+  height: 30px;
+  width: 30px;
+  background-color: #d5d5d5;
+  border-radius: 5px;
+  cursor: pointer;  
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  }
+  input[type='checkbox']:after{
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+    font-weight: 900;
+    font-size: 20px;
+    color: white;
+    display: none;
+  }
+  input[type='checkbox']:hover{
+    background-color: #a5a5a5;
+  }
+  input[type='checkbox']:checked{
+    background-color: #5dcd3e;
+  }
+  input[type='checkbox']:checked:after{
+    display: block;
+  }
+  input[type='submit']{
+   width: 300px;
+   height: 50px;
+   font-size: 25px;
+   border-radius: 5px;
+   cursor: pointer;
+  }
+  input[type='submit']:hover{
+    background-color: #a5a5a5;
+  }
+  input[type='submit']:active{
+    background-color: #5dcd3e;
+  }
+  .submit{
+    display: flex;
+    justify-content: center;
+  }
+select{
+  width: 200px;
+  height: 30px;
+  font-size: 20px;
+}

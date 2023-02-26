@@ -6,6 +6,7 @@
     <title>360&deg; Image</title>
     <meta name="description" content="360&deg; Image - A-Frame">
     <script src="https://aframe.io/aframe/dist/aframe-master.js"></script>
+    <link rel="stylesheet" href="{% static 'createform.css'%}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -30,9 +31,31 @@
                 </div>
             </div>
         </nav>
-<form method="post" enctype='multipart/form-data'>{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
+<form method="post" enctype='multipart/form-data'>
+    {% csrf_token %}
+    <div class="wrapper">
+    <div>
+        <label class="title" for="id_description">Description</label>
+    </div>
+    <div>
+        <input class="description-value" type="text" name="description" maxlength="200" required id="id_description">
+    </div>
+
+
+    <div>
+        <label class="title" for="id_image">Image</label>
+    </div>
+
+    <div class="input-div">
+        <p>Drag and drop 360 image here or <span class="browse">Browse</span></p>
+        <input class="file" type="file" name="image" accept="image/*" id="id_image">
+    </div>
+ <div class="submit">
+  <input type="submit" value="Save">
+ </div>
+
+
+</div>
 </form>
 </body>
 </html>

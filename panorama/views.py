@@ -31,7 +31,7 @@ def home(request):
 
 class ExcursionCreateView(CreateView):
     model = Excursion
-    fields = ['title','description','image','is_private','users']
+    fields = ['title','image','is_private','users']
     def get_absolute_url(self):
         from django.urls import reverse
         return reverse('excursions')
