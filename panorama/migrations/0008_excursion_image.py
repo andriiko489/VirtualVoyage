@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='excursion',
             name='image',
-            field=models.ImageField(default='notfound.jpg', upload_to=''),
+            field=models.ImageField(default='notfound.jpg', null=True, upload_to=''),
         ),
     ]

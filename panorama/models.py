@@ -5,7 +5,7 @@ class Excursion(models.Model):
     description = models.CharField(max_length=200)
     is_private = models.BooleanField(default=False)
     users = models.ManyToManyField(Profile, blank=True)
-    image = models.ImageField(default="notfound.jpg", null=True)
+    image = models.ImageField(default="notfound.jpg", null=True, blank=True)
     def __str__(self):
         return self.title
     class Meta:
@@ -14,7 +14,7 @@ class Excursion(models.Model):
 
 class Panorama(models.Model):
     description = models.CharField(max_length=200)
-    image = models.ImageField()
+    image = models.ImageField(null=True, blank=True)
     excursion = models.ForeignKey(Excursion, on_delete=models.CASCADE, blank=True)
     def __str__(self):
         return self.description
