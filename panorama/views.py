@@ -32,13 +32,7 @@ def home(request):
 class ExcursionCreateView(CreateView):
     model = Excursion
     fields = ['title','description','image','is_private','users']
-    def form_valid(self, form, **kwargs):
-        self.object = form.save(commit=False)
-        print(self.object.image.url)
-        super(ExcursionCreateView, self).form_valid(form)
-        return super().form_valid(form)
     def get_absolute_url(self):
-        print(self.image)
         from django.urls import reverse
         return reverse('excursions')
 class PanoramaCreateView(CreateView):
@@ -51,6 +45,7 @@ class PanoramaCreateView(CreateView):
         super(PanoramaCreateView, self).form_valid(form)
         return super().form_valid(form)
     def post(self, request, excursion_id, *args, **kwargs):
+        self.excursion = excursion_id
         return super().post(request, *args, **kwargs)
     def get_success_url(self):
         return "/panorama/"+str(self.kwargs.get('excursion_id'))
