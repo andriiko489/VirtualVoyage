@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseNotAllowed
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -48,8 +48,5 @@ class PanoramaCreateView(CreateView):
 
         super(PanoramaCreateView, self).form_valid(form)
         return super().form_valid(form)
-    def post(self, request, excursion_id, *args, **kwargs):
-        self.excursion = excursion_id
-        return super().post(request, *args, **kwargs)
     def get_success_url(self):
         return "/panorama/"+str(self.kwargs.get('excursion_id'))
