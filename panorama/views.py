@@ -36,32 +36,22 @@ def home(request):
 @method_decorator([login_required], name = 'dispatch')
 class ExcursionCreateView(CreateView):
     model = Excursion
-    fields = ['title','image','is_private','users']
+    fields = ['title','image']
     def get_absolute_url(self):
         from django.urls import reverse
         return reverse('excursions')
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['users'] = User.objects.all()
-        context['len'] = len(User.objects.all())
-        context['height'] = context['len']*3
-        return context
 
-@method_decorator([login_required], name='dispatch')
 class PanoramaCreateView(CreateView):
     form_class = PanoramaForm
     template_name = "panorama/panorama_form.html"
     def form_valid(self, form, **kwargs):
         self.object = form.save(commit=False)
+        self.object.excursion = Excursion.objects.get(id=self.kwargs.get('excursion_id'))
 
         super(PanoramaCreateView, self).form_valid(form)
         return super().form_valid(form)
+    def post(self, request, excursion_id, *args, **kwargs):
+        self.excursion = excursion_id
+        return super().post(request, *args, **kwargs)
     def get_success_url(self):
         return "/panorama/"+str(self.kwargs.get('excursion_id'))
-    def get_form_kwargs(self, *args, **kwargs):
-        excursion=Excursion.objects.get(id=self.kwargs.get('excursion_id'))
-
-        if not (not excursion.is_private or (str(self.request.user) in map(str, excursion.users.all()))):
-            raise PermissionDenied
-        form_kwargs = super(PanoramaCreateView, self).get_form_kwargs(*args, **kwargs)
-        return form_kwargs
