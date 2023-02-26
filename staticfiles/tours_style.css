@@ -7,46 +7,52 @@ html {
 }
 
 body {
-   min-height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 .blocks {
-    max-width: 1600px;
-    height: 100%;
-    width: 92%;
-    margin: 20px auto;
-    display: flex;
     flex-wrap: wrap;
     gap: 10px;
-
+    justify-content: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
 
 }
 
 .tour-pan {
     border-radius: 25px;
+    display: inline-block;
     min-width: 300px;
-    height: auto;
+    min-height: 300px;
+    margin: 25px;
+    max-width: 500px;
     padding-top: 30px;
     padding-bottom: 30px;
     background-color: #fff;
+    text-align: center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    margin: 0;
-    display: inline-block;
-
 }
+
+a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 .tour-pan img {
     width: 100%;
+    min-height: 200px;
+    max-height: 300px;
     max-width: 500px;
-    height: auto;
+    height: 90%;
     margin-bottom: 10px;
 }
 
-.tour-pan {
-    text-align: center;
-}
+
 .btn {
     align: center;
     justify-content: center;
@@ -55,24 +61,29 @@ body {
     padding: 10px 20px;
     background-color: #f6f6f6;
     width: 95%;
-    color: #fff;
+    color: #333;
     text-decoration: none;
     border-radius: 40px;
     transition: background-color 0.3s ease;
 }
 
+.btn:hover {
+    color: firebrick;
+}
+
 footer {
-     margin-top: auto;
+    margin-top: auto;
     background-color: #333;
     color: #fff;
     padding: 20px;
     text-align: center;
 }
-.button {
 
+.button {
     display: flex;
     justify-content: center;
 }
+
 form div {
     margin-left: 30px;
     margin-top: 30px;
