@@ -1,6 +1,9 @@
 from django.http import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import render
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
+
 from .models import Panorama, Excursion
 from .form import PaymentForm
 def panorama(request, excursion_id=1, panorama_id=1):
@@ -28,13 +31,14 @@ def excursion(request, excursion_id):
 def home(request):
     context = {}
     return render(request, 'home/home.html', context)
-
+@method_decorator([login_required], name = 'dispatch')
 class ExcursionCreateView(CreateView):
     model = Excursion
     fields = ['title','image','is_private','users']
     def get_absolute_url(self):
         from django.urls import reverse
         return reverse('excursions')
+@method_decorator([login_required], name='dispatch')
 class PanoramaCreateView(CreateView):
     form_class = PaymentForm
     template_name = "panorama/panorama_form.html"
