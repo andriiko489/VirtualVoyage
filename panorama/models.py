@@ -2,7 +2,6 @@ from django.db import models
 from users.models import Profile
 class Excursion(models.Model):
     title = models.CharField(max_length=50)
-    description = models.CharField(max_length=200)
     is_private = models.BooleanField(default=False)
     users = models.ManyToManyField(Profile, blank=True)
     image = models.ImageField(default="notfound.jpg", null=True, blank=True)

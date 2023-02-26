@@ -3,9 +3,10 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView
+from django.core.exceptions import PermissionDenied
 
 from .models import Panorama, Excursion
-from .form import PaymentForm
+from .form import PanoramaForm
 def panorama(request, excursion_id=1, panorama_id=1):
     if (Excursion.objects.get(id=excursion_id).is_private == False) or (
             str(request.user) in map(str, Excursion.objects.get(id=excursion_id).users.all())):
@@ -16,7 +17,7 @@ def panorama(request, excursion_id=1, panorama_id=1):
         context = {'panorama': panorama, "excursion_id":excursion_id, "panorama_id":panorama_id, 'num': num}
         return render(request, 'panorama/panorama.html', context)
     else:
-        return HttpResponse("405 Error: У вас немає доступу")
+        raise PermissionDenied
 def excursions(request):
     context = {}
     context['excursions'] = Excursion.objects.filter(is_private=False)
@@ -27,7 +28,7 @@ def excursion(request, excursion_id):
         context['panorams'] = Panorama.objects.filter(excursion=excursion_id)
         return render(request, 'panorams/panorams.html', context)
     else:
-        return HttpResponse("405 Error: У вас немає доступу")
+        raise PermissionDenied
 def home(request):
     context = {}
     return render(request, 'home/home.html', context)
@@ -40,7 +41,7 @@ class ExcursionCreateView(CreateView):
         return reverse('excursions')
 @method_decorator([login_required], name='dispatch')
 class PanoramaCreateView(CreateView):
-    form_class = PaymentForm
+    form_class = PanoramaForm
     template_name = "panorama/panorama_form.html"
     def form_valid(self, form, **kwargs):
         self.object = form.save(commit=False)
@@ -50,3 +51,9 @@ class PanoramaCreateView(CreateView):
         return super().form_valid(form)
     def get_success_url(self):
         return "/panorama/"+str(self.kwargs.get('excursion_id'))
+    def get_form_kwargs(self, *args, **kwargs):
+        excursion=Excursion.objects.get(id=self.kwargs.get('excursion_id'))
+        if not (not excursion.is_private or (str(self.request.user) in map(str, excursion.users.all()))):
+            raise PermissionDenied
+        form_kwargs = super(PanoramaCreateView, self).get_form_kwargs(*args, **kwargs)
+        return form_kwargs
