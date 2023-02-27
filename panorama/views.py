@@ -11,7 +11,6 @@ from .form import PanoramaForm
 def panorama(request, excursion_id=1, panorama_id=1):
     if (Excursion.objects.get(id=excursion_id).is_private == False) or (
             str(request.user) in map(str, Excursion.objects.get(id=excursion_id).users.all())):
-        print(excursion_id)
         panorams = Panorama.objects.filter(excursion=excursion_id)
         num = len(panorams)
         panorama = panorams[panorama_id-1]
@@ -36,11 +35,16 @@ def home(request):
 @method_decorator([login_required], name = 'dispatch')
 class ExcursionCreateView(CreateView):
     model = Excursion
-    fields = ['title','image']
+    fields = ['title','image','is_private','users']
     def get_absolute_url(self):
         from django.urls import reverse
         return reverse('excursions')
-
+    #def get_context_data(self, **kwargs):
+    #    # Call the base implementation first to get a context
+    #    context = super().get_context_data(**kwargs)
+    #    # Add in a QuerySet of all the books
+    #    context['users'] = User.objects.all()
+    #    return context
 class PanoramaCreateView(CreateView):
     form_class = PanoramaForm
     template_name = "panorama/panorama_form.html"

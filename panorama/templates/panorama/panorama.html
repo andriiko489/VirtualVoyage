@@ -54,7 +54,7 @@
         function previous() {
             if (idPanorama > 1) {
                 idPanorama--;
-                str = "http://127.0.0.1:8000/panorama/" + idExcursion +"/"+ idPanorama;
+                str = "{% url 'excursions' %}" + idExcursion +"/"+ idPanorama;
                 window.location.href = str;
             }
         };
@@ -62,7 +62,7 @@
         function next() {
             if (idPanorama < capacity) {
                 idPanorama++;
-                str = "http://127.0.0.1:8000/panorama/" + idExcursion + "/" + idPanorama;
+                str = "{% url 'excursions' %}" + idExcursion + "/" + idPanorama;
                 window.location.href = str;
             }
         };
@@ -84,8 +84,8 @@
             clearTimeout(hoverTimer);
         });
     </script>
-{#    <a-text font="kelsonsans" value="{{ panorama.description }}" width="6" position="-2.5 0.25 -1.5"#}
-{#            rotation="0 15 0"></a-text>#}
+    <a-text value="{{ panorama.description }}" width="6" position="-2.5 0.25 -1.5"
+            rotation="0 15 0"></a-text>
 </a-scene>
 <footer>
     <p>&copy; 2023 Virtual Voyage</p>
