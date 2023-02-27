@@ -45,6 +45,7 @@ class ExcursionCreateView(CreateView):
     #    # Add in a QuerySet of all the books
     #    context['users'] = User.objects.all()
     #    return context
+@method_decorator([login_required], name = 'dispatch')
 class PanoramaCreateView(CreateView):
     form_class = PanoramaForm
     template_name = "panorama/panorama_form.html"
